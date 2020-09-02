@@ -6,16 +6,13 @@ class AnimatedBar extends Component {
     animation: new Animated.Value(this.props.progress),
   };
 
-  componentWillMount() {
+  componentDidMount() {
+    this.attachListener();
     this.widthInterpolate = this.state.animation.interpolate({
       inputRange: [0, 1],
       outputRange: ["0%", "100%"],
       extrapolate: "clamp",
     });
-  }
-
-  componentDidMount() {
-    this.attachListener();
   }
 
   attachListener = () => {
